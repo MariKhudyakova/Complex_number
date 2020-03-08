@@ -1,0 +1,43 @@
+using System;
+using static System.Console;
+
+namespace Complex_number
+{
+    class Program
+    {
+        static void parsing(string s, out string A, out string B)
+        {
+            string a = "", b = "", z = ReadLine();
+            int i = 0;
+            while (i < z.Length)
+            {
+                if ((i >= z.Length) || ((z[i] == '+') || (z[i] == '-'))) break;
+                else
+                {
+                    a += z[i];
+                    i++;
+                }
+            }
+            i = z.Length - 1;
+            while (z[i] != 'j')
+            {
+                b += z[i];
+                i--;
+            }
+            out A = a;
+            out B = revers(b); 
+        }
+        static string revers (string s)
+        {
+            string t = "";
+            for (int i = s.Length - 1; i >= 0; i--) t += s[i];
+            return t;
+        }
+        static void Main(string[] args)
+        {
+            string a = "", b = "";
+            WriteLine($"Значение a = {a}/nЗначение b = {revers(b)}");
+            ReadKey();
+        }
+    }
+}
